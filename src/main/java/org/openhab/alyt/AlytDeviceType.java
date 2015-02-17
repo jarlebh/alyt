@@ -1,0 +1,77 @@
+package org.openhab.alyt;
+
+public enum AlytDeviceType {
+	USER (1),
+	SCENARIO (2),
+	SENSOR (3),
+	NVR_DVR (4),
+	EVENTS (5),
+	RULE (6),
+	WIFI_DATA (7),
+	ALYT_HUB (8),
+	MODULES (9),
+	FOSCAM (400),
+	ONBOARD (401),
+	DLINK (402),
+	DOMOTICA (500),
+	ZW_DEV (501),
+	SMART_ENERGY_SWITCH (503),
+	SMART_ENERGY_ILLUMINATOR (504),
+	THERMOSTATIC_HEAD_DONFOSS (505),
+	SCREW_IN_ON_OFF (506),
+	POWER_METER (507),
+	TEMPERATURE_HUMIDITY (508),
+	MICRO_ILLUMINATOR_G2 (509),
+	MICRO_SWITCH_G2 (510),
+	MICRO_MOTOR_CONTROLLER (511),
+	PLUG_IN_ON_OFF_MODULE (512),
+	DOOR_WINDOW_DETECTOR (513),
+	NIE_DOOR_WINDOWS_SENSOR (535),
+	PLUG_IN_DIMMER_MODULE (514),
+	ILLUMINATION_SENSOR (515),
+	FLOOD_DETECTOR (516),
+	MOTION_DETECTOR (517),
+	SMOKE_DETECTOR (518),
+	WALL_PLUG (519),
+	RELAY_SWITCH_FGS211 (520),
+	DIMMER_FGD211 (521),
+	ROLLER_SHUTTER_FGR221 (522),
+	THERMOSTATIC_STELLAZ (523),
+	TEMPERATURE_SENSOR (524),
+	POWER_READER (525),
+	DOOR_LOCK (526),
+	BENEXT_ALARM_SOUND (534),
+	NIE_UE_PIR (536),
+	GENERIC_DIMMER (527),
+	GENERIC_SWITCH (528),
+	GENERIC_THERMOSTATIC_TESTINA (529),
+	GENERIC_POWER_METER (530),
+	GENERIC_POWER_READER (531),
+	ZB_DEV (1000),
+	UNKNOWN_ZB_DEV (1001),
+	LED_LIGHT_BULBS (1002),
+	EXTERNAL_MODULE_DEV (9999),
+	EXTERNAL_MODULE_INPUT_DEV (10000),
+	EXTERNAL_MODULE_OUTPUT_DEV (10001),
+	EXTERNAL_MODULE_INPUT_OUTPUT_DEV (10002);
+	
+	private final int id;
+	private AlytDeviceType(int id) {
+		this.id = id;
+	}
+	public static AlytDeviceType findDeviceType(int id) {
+		AlytDeviceType type = null;
+		for (AlytDeviceType p : AlytDeviceType.values()) {
+		   if (p.id == id) {
+			   type = p;
+		   }
+		}
+		if (type == null) {
+			throw new RuntimeException("Could not find DeviceType:"+id);
+		}
+		return type;
+	}
+	public String toString() {
+		return this.name()+"("+this.id+")";
+	}
+}
